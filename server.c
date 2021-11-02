@@ -21,7 +21,6 @@ static void	ft_listen(int sig, siginfo_t *info, void *context)
 	if (sig == SIGUSR1)
 	{
 		rst = rst << 1;
-		rst = rst + 0;
 	}
 	else if (sig == SIGUSR2)
 	{

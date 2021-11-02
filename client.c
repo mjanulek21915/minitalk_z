@@ -66,7 +66,7 @@ int	main(int ac, char **av)
 	if ((sigaction(SIGUSR1, &sa, NULL)) || (sigaction(SIGUSR2, &sa, NULL)))
 		return (0);
 	pid = ft_atoi(av[1]);
-	if (pid == 0)
+	if (pid < 2)
 		return (0);
 	ft_client_transmit(pid, av[2]);
 }

@@ -21,10 +21,23 @@ int	ft_set_signal(pid_t pid, int mode)
 	return (comm_id);
 }
 
+void	ft_send_signal(pid_t pid, int sig)
+{
+	if (kill(pid, sig))
+	{
+		do_exit();
+	}
+}
+
 void	ft_write(char c)
 {
 	if ((write(1, &c, 1)) < 0)
 	{
 		do_exit();
 	}
+}
+
+void	do_exit(void)
+{
+	exit(0);
 }

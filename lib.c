@@ -12,27 +12,25 @@
 
 #include "minitalk.h"
 
-void	do_exit(void)
-{
-	exit(0);
-}
 
-unsigned int	ft_atoi(char *str)
-{
-	unsigned long int	rst;
 
+pid_t	ft_atoi(char *str)
+{
+	unsigned long long	rst;
 	rst = 0;
 	while (*str)
 	{
 		if (*str < '0' || *str > '9')
 			return (0);
+		if ((rst == ULLONG_MAX / 10) && (*str > '5'))
+			return (0);
 		rst = rst * 10;
 		rst = rst + *str - '0';
 		str++;
-		if (rst > UINT_MAX)
+		if (rst > PID_MAX)
 			return (0);
 	}
-	return ((unsigned int)rst);
+	return ((pid_t)rst);
 }
 
 static void	ft_write_pid_rec(pid_t nbr)
@@ -60,10 +58,4 @@ void	ft_write_pid(pid_t nbr)
 		ft_write('0');
 }
 
-void	ft_send_signal(pid_t pid, int sig)
-{
-	if (kill(pid, sig))
-	{
-		do_exit();
-	}
-}
+

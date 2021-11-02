@@ -19,8 +19,10 @@
 # include <limits.h>
 # include <errno.h>
 
+# define PID_MAX	99998
+
 void				do_exit(void);
-unsigned int		ft_atoi(char *str);
+pid_t				ft_atoi(char *str);
 void				ft_write_pid(pid_t nbr);
 void				ft_send_signal(pid_t pid, int sig);
 int					ft_set_signal(pid_t pid, int mode);

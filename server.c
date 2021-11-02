@@ -21,13 +21,14 @@ static void	ft_listen(int sig, siginfo_t *info, void *context)
 	if (sig == SIGUSR1)
 	{
 		rst = rst << 1;
+		pos++;
 	}
 	else if (sig == SIGUSR2)
 	{
 		rst = rst << 1;
 		rst = rst + 1;
+		pos++;
 	}
-	pos++;
 	if (pos == 8)
 	{
 		ft_write(rst);

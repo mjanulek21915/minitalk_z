@@ -14,7 +14,7 @@
 
 void	do_exit(void)
 {
-	exit(1);
+	exit(0);
 }
 
 unsigned int	ft_atoi(char *str)

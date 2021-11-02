@@ -12,7 +12,7 @@
 
 #include "minitalk.h"
 
-void	ft_pass(int sig, siginfo_t *info, void *context)
+static void	ft_pass(int sig, siginfo_t *info, void *context)
 {
 	sig = sig;
 	info = info;
@@ -24,7 +24,6 @@ static void	ft_client_transmit_byte(pid_t pid, char c)
 	int				i;
 	unsigned char	rst;
 
-	rst = 0;
 	i = 0;
 	while (i < 8)
 	{
@@ -36,7 +35,7 @@ static void	ft_client_transmit_byte(pid_t pid, char c)
 			ft_send_signal(pid, SIGUSR2);
 		if (usleep(6000))
 			if (errno != EINTR)
-				return ;
+				do_exit();
 		i++;
 	}
 }
@@ -55,6 +54,8 @@ int	main(int ac, char **av)
 	pid_t				pid;
 	struct sigaction	sa;
 
+	if (ac != 3)
+		return (0);
 	sa.sa_flags = SA_SIGINFO;
 	if ((sigemptyset(&sa.sa_mask)))
 		return (0);
@@ -63,8 +64,6 @@ int	main(int ac, char **av)
 		return (0);
 	sa.sa_sigaction = ft_pass;
 	if ((sigaction(SIGUSR1, &sa, NULL)) || (sigaction(SIGUSR2, &sa, NULL)))
-		return (0);
-	if (ac != 3)
 		return (0);
 	pid = ft_atoi(av[1]);
 	if (pid == 0)

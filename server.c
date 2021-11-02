@@ -12,7 +12,7 @@
 
 #include "minitalk.h"
 
-void	ft_listen(int sig, siginfo_t *info, void *context)
+static void	ft_listen(int sig, siginfo_t *info, void *context)
 {
 	static int	pos = 0;
 	static char	rst = 0;

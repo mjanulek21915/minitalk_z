@@ -35,7 +35,7 @@ static void	ft_client_transmit_byte(pid_t pid, char c)
 			ft_send_signal(pid, SIGUSR2);
 		if (usleep(6000))
 			if (errno != EINTR)
-				do_exit();
+				exit(0);
 		i++;
 	}
 }

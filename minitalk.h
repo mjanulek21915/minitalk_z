@@ -26,6 +26,5 @@ void				ft_write_pid(pid_t nbr);
 int					ft_set_signal(pid_t pid, int mode);
 void				ft_send_signal(pid_t pid, int sig);
 void				ft_write(char c);
-void				do_exit(void);
 
 #endif

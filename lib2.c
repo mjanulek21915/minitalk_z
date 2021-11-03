@@ -24,20 +24,11 @@ int	ft_set_signal(pid_t pid, int mode)
 void	ft_send_signal(pid_t pid, int sig)
 {
 	if (kill(pid, sig))
-	{
-		do_exit();
-	}
+		exit(0);
 }
 
 void	ft_write(char c)
 {
 	if ((write(1, &c, 1)) < 0)
-	{
-		do_exit();
-	}
-}
-
-void	do_exit(void)
-{
-	exit(0);
+		exit(0);
 }

@@ -12,11 +12,10 @@
 
 #include "minitalk.h"
 
-
-
 pid_t	ft_atoi(char *str)
 {
 	unsigned long long	rst;
+	
 	rst = 0;
 	while (*str)
 	{
